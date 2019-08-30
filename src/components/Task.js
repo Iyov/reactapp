@@ -16,10 +16,15 @@ class Task extends Component {
         return <p style={this.StyleCompleted()} >
             {task.id} - 
             {task.title} - 
-            {task.description} - 
-            {task.done}
-            <input type="checkbox" />
-            <button style={btnDelete}>
+            {task.description}
+            <input 
+                type="checkbox" 
+                onChange={this.props.ckeckDone.bind(this, task.id)}
+            />
+            <button 
+                style={btnDelete} 
+                onClick={this.props.deleteTask.bind(this, task.id)} 
+            >
                 x
             </button>
         </p>
@@ -31,11 +36,11 @@ Task.propTypes = {
 }
 
 const btnDelete = {
-    fontSize: '18px',
+    fontSize: '14px',
     background: '#ea2027',
     color: '#fff',
     border: 'none',
-    padding: '10px 15px',
+    padding: '8px 8px',
     borderRadius: '50%',
     cursor: 'pointer'
 }
